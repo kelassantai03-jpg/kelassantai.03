@@ -16,6 +16,12 @@
     --glass-border: rgba(255, 255, 255, 0.1);
     --glow-blue: rgba(59, 130, 246, 0.3);
     --glow-purple: rgba(139, 92, 246, 0.3);
+    --container-max: 1200px;
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
 }
 
 html {
@@ -28,6 +34,37 @@ body {
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Container for consistent width */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Prevent text overflow */
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Make images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ensure buttons are comfortable on mobile */
+button, .btn, .cta-button {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
 }
 
 /* Background Layers */
@@ -429,53 +466,57 @@ body {
 
 /* Sections */
 section {
-    padding: 6rem 2rem;
+    padding: clamp(40px, 8vw, 96px) clamp(16px, 4vw, 32px);
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: clamp(24px, 5vw, 64px);
 }
 
 .section-header h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.75rem, 5vw, 3rem);
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     background: linear-gradient(135deg, var(--text-primary), var(--accent-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    line-height: 1.3;
 }
 
 .section-header p {
     color: var(--text-secondary);
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(14px, 2.5vw, 18px);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
 }
 
 .section-icon {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 1rem;
 }
 
 /* Header Image Section */
 .header-image-section {
-    padding-top: 80px;
-    margin-bottom: 2rem;
+    padding-top: 70px;
+    margin-bottom: clamp(16px, 3vw, 32px);
 }
 
 .header-image-wrapper {
     position: relative;
     width: 100%;
-    max-height: 500px;
+    max-height: clamp(300px, 50vw, 500px);
     overflow: hidden;
-    border-radius: 0 0 30px 30px;
+    border-radius: 0 0 clamp(16px, 4vw, 30px) clamp(16px, 4vw, 30px);
 }
 
 .header-image {
     width: 100%;
-    height: 450px;
+    height: clamp(200px, 40vw, 450px);
     object-fit: cover;
     object-position: center;
     display: block;
@@ -906,10 +947,11 @@ section {
 .card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 2rem;
+    border-radius: clamp(12px, 3vw, 20px);
+    padding: clamp(16px, 4vw, 32px);
     backdrop-filter: blur(20px);
     transition: all 0.3s ease;
+    overflow: hidden;
 }
 
 .card:hover {
@@ -921,9 +963,9 @@ section {
 /* Profile Section */
 .profile-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(16px, 3vw, 32px);
+    margin-bottom: clamp(24px, 4vw, 48px);
 }
 
 .identity-card {
@@ -931,13 +973,14 @@ section {
 }
 
 .identity-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    margin-bottom: clamp(12px, 2vw, 24px);
     color: var(--accent-blue);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .identity-item {
@@ -945,6 +988,7 @@ section {
     justify-content: space-between;
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--glass-border);
+    gap: 8px;
 }
 
 .identity-item:last-child {
@@ -953,11 +997,14 @@ section {
 
 .identity-label {
     color: var(--text-secondary);
+    font-size: clamp(13px, 2vw, 15px);
 }
 
 .identity-value {
     font-weight: 600;
     color: var(--text-primary);
+    font-size: clamp(13px, 2vw, 15px);
+    text-align: right;
 }
 
 .dosen-card {
@@ -965,25 +1012,26 @@ section {
 }
 
 .dosen-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    margin-bottom: clamp(12px, 2vw, 24px);
     color: var(--accent-purple);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .dosen-avatar {
-    width: 100px;
-    height: 100px;
+    width: clamp(80px, 15vw, 100px);
+    height: clamp(80px, 15vw, 100px);
     border-radius: 50%;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1rem;
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 2.5rem);
 }
 
 .struktur-card {
@@ -991,23 +1039,29 @@ section {
 }
 
 .struktur-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    margin-bottom: clamp(12px, 2vw, 24px);
     color: var(--accent-cyan);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .struktur-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
+    gap: clamp(8px, 2vw, 16px);
+    padding: clamp(8px, 2vw, 16px);
     background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
+    overflow: hidden;
     margin-bottom: 0.75rem;
+}
+
+.struktur-item:last-child {
+    margin-bottom: 0;
 }
 
 .struktur-item i {
@@ -1220,13 +1274,13 @@ section {
 /* Contact Section */
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(16px, 3vw, 32px);
 }
 
 .contact-card {
     text-align: center;
-    padding: 2.5rem 2rem;
+    padding: clamp(20px, 4vw, 40px) clamp(16px, 3vw, 32px);
     transition: all 0.3s ease;
 }
 
@@ -1235,14 +1289,14 @@ section {
 }
 
 .contact-icon {
-    width: 80px;
-    height: 80px;
+    width: clamp(60px, 12vw, 80px);
+    height: clamp(60px, 12vw, 80px);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.5rem;
-    font-size: 2rem;
+    margin: 0 auto clamp(12px, 2vw, 24px);
+    font-size: clamp(1.5rem, 4vw, 2rem);
 }
 
 .contact-card.whatsapp .contact-icon {
@@ -1258,20 +1312,21 @@ section {
 }
 
 .contact-card h3 {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     margin-bottom: 0.5rem;
 }
 
 .contact-card .contact-label {
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: clamp(13px, 2.5vw, 14px);
+    margin-bottom: clamp(8px, 2vw, 16px);
 }
 
 .contact-card .contact-value {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: clamp(14px, 3vw, 18px);
     word-break: break-all;
+    line-height: 1.4;
 }
 
 .contact-link {
@@ -1357,7 +1412,7 @@ section {
 .activity-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    border-radius: clamp(12px, 3vw, 20px);
     overflow: hidden;
     transition: all 0.3s ease;
 }
@@ -1370,13 +1425,13 @@ section {
 
 .activity-image {
     width: 100%;
-    height: 200px;
+    height: clamp(150px, 30vw, 200px);
     object-fit: cover;
     background: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 8vw, 4rem);
 }
 
 .activity-image img {
@@ -1386,36 +1441,37 @@ section {
 }
 
 .activity-content {
-    padding: 1.5rem;
+    padding: clamp(12px, 3vw, 24px);
 }
 
 .activity-content h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.75rem;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    margin-bottom: 0.5rem;
     color: var(--text-primary);
 }
 
 .activity-content p {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: clamp(13px, 2.5vw, 15px);
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: clamp(12px, 2vw, 24px);
 }
 
 .read-more-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: clamp(10px, 2vw, 12px) clamp(16px, 3vw, 24px);
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
     color: white;
     text-decoration: none;
     border-radius: 30px;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: clamp(13px, 2.5vw, 14px);
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    min-height: 44px;
 }
 
 .read-more-btn:hover {
