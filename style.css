@@ -1450,6 +1450,36 @@ section {
     color: var(--text-primary);
 }
 
+.activity-content .event-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.activity-content .event-info span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: clamp(11px, 2vw, 13px);
+    color: var(--text-secondary);
+}
+
+.activity-content .event-info i {
+    color: var(--accent-blue);
+    font-size: clamp(10px, 1.5vw, 12px);
+}
+
+.activity-content .narration {
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: clamp(12px, 2vw, 24px);
+    font-family: 'Poppins', sans-serif;
+}
+
 .activity-content p {
     color: var(--text-secondary);
     font-size: clamp(13px, 2.5vw, 15px);
