@@ -1446,37 +1446,38 @@ section {
 
 .activity-content h3 {
     font-size: clamp(1.1rem, 3vw, 1.3rem);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     color: var(--text-primary);
 }
 
-.activity-content .event-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+.activity-content .narasi-box {
     margin-bottom: 12px;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--glass-border);
 }
 
-.activity-content .event-info span {
-    display: inline-flex;
+.activity-content .narasi-box .tanggal,
+.activity-content .narasi-box .waktu,
+.activity-content .narasi-box .lokasi {
+    display: flex;
     align-items: center;
-    gap: 4px;
-    font-size: clamp(11px, 2vw, 13px);
+    gap: 6px;
+    font-size: 12px;
     color: var(--text-secondary);
+    margin-bottom: 4px;
 }
 
-.activity-content .event-info i {
+.activity-content .narasi-box .tanggal i,
+.activity-content .narasi-box .waktu i,
+.activity-content .narasi-box .lokasi i {
     color: var(--accent-blue);
-    font-size: clamp(10px, 1.5vw, 12px);
+    font-size: 11px;
+    width: 16px;
 }
 
-.activity-content .narration {
+.activity-content .narasi-box .narasi {
     color: var(--text-secondary);
     font-size: 12px;
     line-height: 1.6;
-    margin-bottom: clamp(12px, 2vw, 24px);
+    margin-top: 10px;
     font-family: 'Poppins', sans-serif;
 }
 
